@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  ffmpeg:
+    image: jrottenberg/ffmpeg:3.3
+    volumes:
+      - ./hls:/root/hls
+    env_file: env
+    command: /root/hls/ffmpeg_stream.sh
+  web:
+    image: httpd:latest
+    volumes: 
+      - ./hls:/usr/local/apache2/htdocs/
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+    ports:
+      - "8080:80"
