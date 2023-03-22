@@ -1,2 +1,4 @@
-hls/web/data/*
+**/*.ts
+**/*.m3u8
+**/supervisord.log
 .env
